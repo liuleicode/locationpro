@@ -1,8 +1,8 @@
 package com.ll.location.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.ll.location.dao.LocalMapper;
-import com.ll.location.model.Local;
+//import com.ll.location.dao.LocalMapper;
+//import com.ll.location.model.Local;
 import jdk.nashorn.internal.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
