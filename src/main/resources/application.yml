@@ -1,7 +1,7 @@
 spring:
     datasource:
         name: test
-        url: jdbc:mysql://127.0.0.1:3306/mysql?characterEncoding=utf8&amp;useSSL=false
+        url: jdbc:mysql://127.0.0.1:3306/locationpro?characterEncoding=utf8&amp;useSSL=false
         username: root
         password: oracle
         # 使用druid数据源
