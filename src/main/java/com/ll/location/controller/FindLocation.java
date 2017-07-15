@@ -22,8 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class FindLocation {
 
     private Logger logger = LoggerFactory.getLogger(FindLocation.class);
-    @Autowired
-    LocalMapper localMapper;
+//    @Autowired
 
 ////    @RequestMapping("/findlocation")
 ////    @ResponseBody
@@ -33,22 +32,22 @@ public class FindLocation {
 //        return "index";
 //    }
 
-    @RequestMapping("/fandlocation/{localno}")
-    @ResponseBody
-    public Local findLocation(@PathVariable(value="localno") String localno){
-        Local local = localMapper.selectByLocalno(localno);
-        logger.info(JSONObject.toJSONString(local));
-        return local;
-    }
-
-    @RequestMapping("/fandlocation1/{localno}")
+//    @RequestMapping("/fandlocation/{localno}")
 //    @ResponseBody
-    public ModelAndView findLocation1(@PathVariable(value="localno") String localno){
-        Local local = localMapper.selectByLocalno(localno);
-        logger.info(JSONObject.toJSONString(local));
-        ModelAndView modelAndView = new ModelAndView("index");
-
-        modelAndView.addObject("local",local);
-        return modelAndView;
-    }
+//    public Local findLocation(@PathVariable(value="localno") String localno){
+//        Local local = localMapper.selectByLocalno(localno);
+//        logger.info(JSONObject.toJSONString(local));
+//        return local;
+//    }
+//
+//    @RequestMapping("/fandlocation1/{localno}")
+////    @ResponseBody
+//    public ModelAndView findLocation1(@PathVariable(value="localno") String localno){
+//        Local local = localMapper.selectByLocalno(localno);
+//        logger.info(JSONObject.toJSONString(local));
+//        ModelAndView modelAndView = new ModelAndView("index");
+//
+//        modelAndView.addObject("local",local);
+//        return modelAndView;
+//    }
 }
