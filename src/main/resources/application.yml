@@ -23,6 +23,7 @@ spring:
     thymeleaf:
       cache: false
       mode: HTML5
+      suffix: .jsp
       content-type: text/html
       encoding: UTF-8
 mybatis:
