@@ -39,9 +39,7 @@ public class LocationController {
         Localdtl localdtl = localdtlMapper.selectByPrimaryKey(localid);
         modelAndView.addObject("localdtl",localdtl);
 
-        if(user == null){
             return modelAndView;
-        }
 
     }
 }

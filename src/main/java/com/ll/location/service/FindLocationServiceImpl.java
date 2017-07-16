@@ -9,6 +9,7 @@ import com.ll.location.model.User;
 import com.ll.location.model.Usersignin;
 import com.ll.location.model.Usersignindtl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.UUID;
@@ -16,6 +17,7 @@ import java.util.UUID;
 /**
  * Created by liulei on 2017/7/16.
  */
+@Service
 public class FindLocationServiceImpl implements FindLocationService {
     @Autowired
     LocaldtlMapper localdtlMapper;
