@@ -40,14 +40,22 @@ public class FindLocation {
 //        return local;
 //    }
 //
-//    @RequestMapping("/fandlocation1/{localno}")
-////    @ResponseBody
-//    public ModelAndView findLocation1(@PathVariable(value="localno") String localno){
-//        Local local = localMapper.selectByLocalno(localno);
-//        logger.info(JSONObject.toJSONString(local));
-//        ModelAndView modelAndView = new ModelAndView("index");
-//
-//        modelAndView.addObject("local",local);
-//        return modelAndView;
-//    }
+    @RequestMapping("/fandlocation1/{localno}")
+//    @ResponseBody
+    public ModelAndView findLocation1(@PathVariable(value="localno") String localno){
+
+        ModelAndView modelAndView = new ModelAndView("welcome");
+        return modelAndView;
+
+    }
+
+    @RequestMapping("/evalution/{localno}")
+//    @ResponseBody
+    public ModelAndView goEvalution(@PathVariable(value="localno") String localno){
+
+        ModelAndView modelAndView = new ModelAndView("/jsp/Evalution");
+        modelAndView.addObject ("localnum",localno);
+        return modelAndView;
+
+    }
 }
