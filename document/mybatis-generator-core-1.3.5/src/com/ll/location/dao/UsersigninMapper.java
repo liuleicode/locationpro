@@ -20,11 +20,13 @@ public interface UsersigninMapper {
 
     @Insert({
         "insert into usersignin (usersigninid, userid, ",
-        "localdtlid, createtime, ",
-        "updatetime, signincount)",
+        "localdtlid, localdtlname, ",
+        "createtime, updatetime, ",
+        "signincount)",
         "values (#{usersigninid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, ",
-        "#{localdtlid,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, ",
-        "#{updatetime,jdbcType=TIMESTAMP}, #{signincount,jdbcType=BIGINT})"
+        "#{localdtlid,jdbcType=VARCHAR}, #{localdtlname,jdbcType=VARCHAR}, ",
+        "#{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, ",
+        "#{signincount,jdbcType=BIGINT})"
     })
     int insert(Usersignin record);
 
@@ -33,7 +35,7 @@ public interface UsersigninMapper {
 
     @Select({
         "select",
-        "usersigninid, userid, localdtlid, createtime, updatetime, signincount",
+        "usersigninid, userid, localdtlid, localdtlname, createtime, updatetime, signincount",
         "from usersignin",
         "where usersigninid = #{usersigninid,jdbcType=VARCHAR}"
     })
@@ -41,6 +43,7 @@ public interface UsersigninMapper {
         @Result(column="usersigninid", property="usersigninid", jdbcType=JdbcType.VARCHAR, id=true),
         @Result(column="userid", property="userid", jdbcType=JdbcType.VARCHAR),
         @Result(column="localdtlid", property="localdtlid", jdbcType=JdbcType.VARCHAR),
+        @Result(column="localdtlname", property="localdtlname", jdbcType=JdbcType.VARCHAR),
         @Result(column="createtime", property="createtime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="updatetime", property="updatetime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="signincount", property="signincount", jdbcType=JdbcType.BIGINT)
@@ -54,6 +57,7 @@ public interface UsersigninMapper {
         "update usersignin",
         "set userid = #{userid,jdbcType=VARCHAR},",
           "localdtlid = #{localdtlid,jdbcType=VARCHAR},",
+          "localdtlname = #{localdtlname,jdbcType=VARCHAR},",
           "createtime = #{createtime,jdbcType=TIMESTAMP},",
           "updatetime = #{updatetime,jdbcType=TIMESTAMP},",
           "signincount = #{signincount,jdbcType=BIGINT}",

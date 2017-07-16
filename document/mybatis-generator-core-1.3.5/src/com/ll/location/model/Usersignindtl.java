@@ -11,6 +11,8 @@ public class Usersignindtl {
 
     private String localdtlid;
 
+    private String localdtlname;
+
     private Date createtime;
 
     private Date updatetime;
@@ -45,6 +47,14 @@ public class Usersignindtl {
 
     public void setLocaldtlid(String localdtlid) {
         this.localdtlid = localdtlid == null ? null : localdtlid.trim();
+    }
+
+    public String getLocaldtlname() {
+        return localdtlname;
+    }
+
+    public void setLocaldtlname(String localdtlname) {
+        this.localdtlname = localdtlname == null ? null : localdtlname.trim();
     }
 
     public Date getCreatetime() {

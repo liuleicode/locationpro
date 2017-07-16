@@ -10,9 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.JdbcType;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface UsersignindtlMapper {
     @Delete({
         "delete from usersignindtl",
@@ -23,10 +21,12 @@ public interface UsersignindtlMapper {
     @Insert({
         "insert into usersignindtl (usersignindtlid, usersignid, ",
         "userid, localdtlid, ",
-        "createtime, updatetime)",
+        "localdtlname, createtime, ",
+        "updatetime)",
         "values (#{usersignindtlid,jdbcType=VARCHAR}, #{usersignid,jdbcType=VARCHAR}, ",
         "#{userid,jdbcType=VARCHAR}, #{localdtlid,jdbcType=VARCHAR}, ",
-        "#{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP})"
+        "#{localdtlname,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, ",
+        "#{updatetime,jdbcType=TIMESTAMP})"
     })
     int insert(Usersignindtl record);
 
@@ -35,7 +35,7 @@ public interface UsersignindtlMapper {
 
     @Select({
         "select",
-        "usersignindtlid, usersignid, userid, localdtlid, createtime, updatetime",
+        "usersignindtlid, usersignid, userid, localdtlid, localdtlname, createtime, updatetime",
         "from usersignindtl",
         "where usersignindtlid = #{usersignindtlid,jdbcType=VARCHAR}"
     })
@@ -44,6 +44,7 @@ public interface UsersignindtlMapper {
         @Result(column="usersignid", property="usersignid", jdbcType=JdbcType.VARCHAR),
         @Result(column="userid", property="userid", jdbcType=JdbcType.VARCHAR),
         @Result(column="localdtlid", property="localdtlid", jdbcType=JdbcType.VARCHAR),
+        @Result(column="localdtlname", property="localdtlname", jdbcType=JdbcType.VARCHAR),
         @Result(column="createtime", property="createtime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="updatetime", property="updatetime", jdbcType=JdbcType.TIMESTAMP)
     })
@@ -57,6 +58,7 @@ public interface UsersignindtlMapper {
         "set usersignid = #{usersignid,jdbcType=VARCHAR},",
           "userid = #{userid,jdbcType=VARCHAR},",
           "localdtlid = #{localdtlid,jdbcType=VARCHAR},",
+          "localdtlname = #{localdtlname,jdbcType=VARCHAR},",
           "createtime = #{createtime,jdbcType=TIMESTAMP},",
           "updatetime = #{updatetime,jdbcType=TIMESTAMP}",
         "where usersignindtlid = #{usersignindtlid,jdbcType=VARCHAR}"

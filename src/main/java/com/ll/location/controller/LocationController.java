@@ -33,6 +33,7 @@ public class LocationController {
      * @param request
      * @param response
      * @return
+     * 用于用户扫描二维码查询地址信息,通过链接也是通过这个controller查询，只是source来源为非零
      */
     @RequestMapping("findlocation")
     public ModelAndView findLocation(String localid, User user, String source, HttpServletRequest request, HttpServletResponse response) {

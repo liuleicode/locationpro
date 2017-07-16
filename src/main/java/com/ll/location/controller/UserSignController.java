@@ -21,6 +21,13 @@ public class UserSignController {
     UsersignindtlService usersignindtlService;
 
 
+    /**
+     * 用户查询登录信息 通过
+     * @param u
+     * @param pagesize
+     * @param pageno
+     * @return
+     */
     @RequestMapping("listusersign")
     public ModelAndView listUserSigns(User u, Integer pagesize, Integer pageno) {
         List<Usersignin> usersignindtls = usersignindtlService.listUsersignindtl(u, pagesize, pageno);

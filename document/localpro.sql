@@ -33,7 +33,7 @@ CREATE TABLE `localdtl` (
   `cityname` varchar(255) DEFAULT NULL COMMENT '市名称',
   `countyid` varchar(50) DEFAULT NULL COMMENT '县id',
   `countyname` varchar(255) DEFAULT NULL COMMENT '县名称',
-  `regionid` varchar(50) DEFAULT NULL COMMENT '区id',
+  `regionid` varchar(53) DEFAULT NULL COMMENT '区id',
   `regionname` varchar(511) DEFAULT NULL COMMENT '区名称',
   `localtionfixurl` varchar(1024) DEFAULT NULL COMMENT '定位链接',
   `area` varchar(511) DEFAULT NULL COMMENT '正文 区域',

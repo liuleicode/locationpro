@@ -21,6 +21,10 @@ public class UsersigninSqlProvider {
             sql.VALUES("localdtlid", "#{localdtlid,jdbcType=VARCHAR}");
         }
         
+        if (record.getLocaldtlname() != null) {
+            sql.VALUES("localdtlname", "#{localdtlname,jdbcType=VARCHAR}");
+        }
+        
         if (record.getCreatetime() != null) {
             sql.VALUES("createtime", "#{createtime,jdbcType=TIMESTAMP}");
         }
@@ -46,6 +50,10 @@ public class UsersigninSqlProvider {
         
         if (record.getLocaldtlid() != null) {
             sql.SET("localdtlid = #{localdtlid,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getLocaldtlname() != null) {
+            sql.SET("localdtlname = #{localdtlname,jdbcType=VARCHAR}");
         }
         
         if (record.getCreatetime() != null) {
