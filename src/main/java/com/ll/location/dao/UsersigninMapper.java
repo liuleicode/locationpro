@@ -82,5 +82,22 @@ public interface UsersigninMapper {
     })
     Usersignin selectByLocalidAndUserid(String localdtlid, String userid);
 
+    @Select({
+            "select",
+            "usersigninid, userid, localdtlid, createtime, updatetime, signincount",
+            "from usersignin",
+            "where userid in(select userid from usersignin" ,
+            " where userid =#{0} order by updatetime desc limit #{1},#{2})"
+    })
+    @Results({
+            @Result(column = "usersigninid", property = "usersigninid", jdbcType = JdbcType.VARCHAR, id = true),
+            @Result(column = "userid", property = "userid", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "localdtlid", property = "localdtlid", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "createtime", property = "createtime", jdbcType = JdbcType.TIMESTAMP),
+            @Result(column = "updatetime", property = "updatetime", jdbcType = JdbcType.TIMESTAMP),
+            @Result(column = "signincount", property = "signincount", jdbcType = JdbcType.BIGINT)
+    })
     List<Usersignin> selectByUseridByPage(String userid,Integer firstitem,Integer limititem);
 }
+
+
