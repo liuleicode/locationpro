@@ -1,5 +1,6 @@
 package com.ll.location.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.ll.location.dao.LocaldtlMapper;
 import com.ll.location.dao.UserMapper;
 import com.ll.location.dao.UsersigninMapper;
@@ -8,6 +9,8 @@ import com.ll.location.model.Localdtl;
 import com.ll.location.model.User;
 import com.ll.location.model.Usersignin;
 import com.ll.location.model.Usersignindtl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +22,7 @@ import java.util.UUID;
  */
 @Service
 public class FindLocationServiceImpl implements FindLocationService {
+    private static Logger logger = LoggerFactory.getLogger(FindLocationServiceImpl.class);
     @Autowired
     LocaldtlMapper localdtlMapper;
     @Autowired
@@ -30,17 +34,27 @@ public class FindLocationServiceImpl implements FindLocationService {
 
     @Override
     public Localdtl findLocal(String localid, User user, String source) {
+        logger.info("进入查询地址程序");
         Localdtl localdtl = localdtlMapper.selectByPrimaryKey(localid);
 
+        logger.info(JSONObject.toJSONString(localdtl));
+
         if (user != null) {
-            this.updateUserInfo(localid, user);
+            try {
+                this.updateUserInfo(localid, user, source);
+            } catch (Exception e) {
+                logger.error("更新数据库异常：：：" + e.getMessage());
+            }
         }
 
         return localdtl;
     }
 
-    private void updateUserInfo(String localid, User user) {
+    private void updateUserInfo(String localid, User user, String source) {
 
+        //如果来源不是扫码 就不需要处理
+        if (!source.equals(0))
+            return;
         Date date = new Date();
         //TODO 这个地方与微信账号有关，不知道具体接口是什么，暂时这么写
         User u = userMapper.selectByPrimaryKey(user.getUserid());

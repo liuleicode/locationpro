@@ -12,6 +12,8 @@ import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.JdbcType;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface UsersigninMapper {
     @Delete({
@@ -79,4 +81,6 @@ public interface UsersigninMapper {
             @Result(column = "signincount", property = "signincount", jdbcType = JdbcType.BIGINT)
     })
     Usersignin selectByLocalidAndUserid(String localdtlid, String userid);
+
+    List<Usersignin> selectByUseridByPage(String userid,Integer firstitem,Integer limititem);
 }
