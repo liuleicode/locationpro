@@ -47,4 +47,30 @@ public class LocationController {
         modelAndView.addObject("localdtl", localdtl);
         return modelAndView;
     }
+
+    @RequestMapping("locationintroduce")
+    public ModelAndView locationIntroduce(String localid, User user, String source, HttpServletRequest request, HttpServletResponse response) {
+
+        logger.info("进入findlocation接口");
+        logger.info("localid:" + localid);
+        logger.info("user" + JSONObject.toJSONString(user));
+        logger.info("source" + source);
+        ModelAndView modelAndView = new ModelAndView("/jsp/localtion");
+        //Localdtl localdtl = findLocationService.findLocal(localid, user, source);
+        //  modelAndView.addObject("localdtl", localdtl);
+        return modelAndView;
+    }
+
+    @RequestMapping("evalution")
+    public ModelAndView evalution(String localid, User user, String source, HttpServletRequest request, HttpServletResponse response) {
+
+        logger.info("进入findlocation接口");
+        logger.info("localid:" + localid);
+        logger.info("user" + JSONObject.toJSONString(user));
+        logger.info("source" + source);
+        ModelAndView modelAndView = new ModelAndView("/jsp/Evalution");
+        //Localdtl localdtl = findLocationService.findLocal(localid, user, source);
+        //  modelAndView.addObject("localdtl", localdtl);
+        return modelAndView;
+    }
 }
