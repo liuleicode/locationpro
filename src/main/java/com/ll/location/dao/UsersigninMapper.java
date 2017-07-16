@@ -13,51 +13,68 @@ import org.apache.ibatis.type.JdbcType;
 
 public interface UsersigninMapper {
     @Delete({
-        "delete from usersignin",
-        "where usersigninid = #{usersigninid,jdbcType=VARCHAR}"
+            "delete from usersignin",
+            "where usersigninid = #{usersigninid,jdbcType=VARCHAR}"
     })
     int deleteByPrimaryKey(String usersigninid);
 
     @Insert({
-        "insert into usersignin (usersigninid, userid, ",
-        "localdtlid, createtime, ",
-        "updatetime, signincount)",
-        "values (#{usersigninid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, ",
-        "#{localdtlid,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, ",
-        "#{updatetime,jdbcType=TIMESTAMP}, #{signincount,jdbcType=BIGINT})"
+            "insert into usersignin (usersigninid, userid, ",
+            "localdtlid, createtime, ",
+            "updatetime, signincount)",
+            "values (#{usersigninid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, ",
+            "#{localdtlid,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, ",
+            "#{updatetime,jdbcType=TIMESTAMP}, #{signincount,jdbcType=BIGINT})"
     })
     int insert(Usersignin record);
 
-    @InsertProvider(type=UsersigninSqlProvider.class, method="insertSelective")
+    @InsertProvider(type = UsersigninSqlProvider.class, method = "insertSelective")
     int insertSelective(Usersignin record);
 
     @Select({
-        "select",
-        "usersigninid, userid, localdtlid, createtime, updatetime, signincount",
-        "from usersignin",
-        "where usersigninid = #{usersigninid,jdbcType=VARCHAR}"
+            "select",
+            "usersigninid, userid, localdtlid, createtime, updatetime, signincount",
+            "from usersignin",
+            "where usersigninid = #{usersigninid,jdbcType=VARCHAR}"
     })
     @Results({
-        @Result(column="usersigninid", property="usersigninid", jdbcType=JdbcType.VARCHAR, id=true),
-        @Result(column="userid", property="userid", jdbcType=JdbcType.VARCHAR),
-        @Result(column="localdtlid", property="localdtlid", jdbcType=JdbcType.VARCHAR),
-        @Result(column="createtime", property="createtime", jdbcType=JdbcType.TIMESTAMP),
-        @Result(column="updatetime", property="updatetime", jdbcType=JdbcType.TIMESTAMP),
-        @Result(column="signincount", property="signincount", jdbcType=JdbcType.BIGINT)
+            @Result(column = "usersigninid", property = "usersigninid", jdbcType = JdbcType.VARCHAR, id = true),
+            @Result(column = "userid", property = "userid", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "localdtlid", property = "localdtlid", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "createtime", property = "createtime", jdbcType = JdbcType.TIMESTAMP),
+            @Result(column = "updatetime", property = "updatetime", jdbcType = JdbcType.TIMESTAMP),
+            @Result(column = "signincount", property = "signincount", jdbcType = JdbcType.BIGINT)
     })
     Usersignin selectByPrimaryKey(String usersigninid);
 
-    @UpdateProvider(type=UsersigninSqlProvider.class, method="updateByPrimaryKeySelective")
+    @UpdateProvider(type = UsersigninSqlProvider.class, method = "updateByPrimaryKeySelective")
     int updateByPrimaryKeySelective(Usersignin record);
 
     @Update({
-        "update usersignin",
-        "set userid = #{userid,jdbcType=VARCHAR},",
-          "localdtlid = #{localdtlid,jdbcType=VARCHAR},",
-          "createtime = #{createtime,jdbcType=TIMESTAMP},",
-          "updatetime = #{updatetime,jdbcType=TIMESTAMP},",
-          "signincount = #{signincount,jdbcType=BIGINT}",
-        "where usersigninid = #{usersigninid,jdbcType=VARCHAR}"
+            "update usersignin",
+            "set userid = #{userid,jdbcType=VARCHAR},",
+            "localdtlid = #{localdtlid,jdbcType=VARCHAR},",
+            "createtime = #{createtime,jdbcType=TIMESTAMP},",
+            "updatetime = #{updatetime,jdbcType=TIMESTAMP},",
+            "signincount = #{signincount,jdbcType=BIGINT}",
+            "where usersigninid = #{usersigninid,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(Usersignin record);
+
+
+    @Select({
+            "select",
+            "usersigninid, userid, localdtlid, createtime, updatetime, signincount",
+            "from usersignin",
+            "where localdtlid = #{0} and userid=#{1}"
+    })
+    @Results({
+            @Result(column = "usersigninid", property = "usersigninid", jdbcType = JdbcType.VARCHAR, id = true),
+            @Result(column = "userid", property = "userid", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "localdtlid", property = "localdtlid", jdbcType = JdbcType.VARCHAR),
+            @Result(column = "createtime", property = "createtime", jdbcType = JdbcType.TIMESTAMP),
+            @Result(column = "updatetime", property = "updatetime", jdbcType = JdbcType.TIMESTAMP),
+            @Result(column = "signincount", property = "signincount", jdbcType = JdbcType.BIGINT)
+    })
+    Usersignin selectByLocalidAndUserid(String localdtlid, String userid);
 }
