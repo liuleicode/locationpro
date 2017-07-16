@@ -29,7 +29,7 @@ public class FindLocationServiceImpl implements FindLocationService {
     UsersignindtlMapper usersignindtlMapper;
 
     @Override
-    public Localdtl findLocal(String localid, User user,String source) {
+    public Localdtl findLocal(String localid, User user, String source) {
         Localdtl localdtl = localdtlMapper.selectByPrimaryKey(localid);
 
         if (user != null) {
@@ -54,14 +54,14 @@ public class FindLocationServiceImpl implements FindLocationService {
             userMapper.insert(u);
         }
         //更新用户登录数据
-        Usersignin usersignin = usersigninMapper.selectByLocalidAndUserid(localid,user.getUserid());
+        Usersignin usersignin = usersigninMapper.selectByLocalidAndUserid(localid, user.getUserid());
 
         Usersignin usersignin1 = new Usersignin();
 
-        if(usersignin!=null){
-            usersignin.setSignincount(usersignin.getSignincount()+1);
+        if (usersignin != null) {
+            usersignin.setSignincount(usersignin.getSignincount() + 1);
             usersignin.setUpdatetime(date);
-        }else{
+        } else {
             usersignin1.setUpdatetime(date);
             usersignin1.setSignincount(1L);
             usersignin1.setCreatetime(date);
@@ -77,7 +77,9 @@ public class FindLocationServiceImpl implements FindLocationService {
         usersignindtl.setLocaldtlid(localid);
         usersignindtl.setUpdatetime(date);
         usersignindtl.setUserid(user.getUserid());
-        usersignindtl.setUsersignid(usersignin == null?usersignin1.getUsersigninid():usersignin.getUsersigninid());
+        usersignindtl.setUsersignid(usersignin == null ? usersignin1.getUsersigninid() : usersignin.getUsersigninid());
+        usersignindtlMapper.insert(usersignindtl);
+
 
     }
 
