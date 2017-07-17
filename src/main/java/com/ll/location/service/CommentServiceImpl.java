@@ -3,7 +3,6 @@ package com.ll.location.service;
 import com.ll.location.dao.LocalimgMapper;
 import com.ll.location.dao.UsercommentMapper;
 import com.ll.location.domain.CommentResult;
-import com.ll.location.domain.CommentResults;
 import com.ll.location.domain.ExecuteResult;
 import com.ll.location.model.Localimg;
 import com.ll.location.model.Usercomment;
