@@ -17,5 +17,5 @@ public interface CommentService {
      * 返回用户评论或者广告
      * @return
      */
-    CommentResults listComment();
+    CommentResults listComment(Integer pageno,Integer pagesize);
 }

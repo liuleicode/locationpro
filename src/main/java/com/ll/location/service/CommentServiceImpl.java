@@ -5,12 +5,14 @@ import com.ll.location.domain.CommentResults;
 import com.ll.location.domain.ExecuteResult;
 import com.ll.location.model.Usercomment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
 /**
  * Created by liulei on 2017/7/17.
  */
+@Repository
 public class CommentServiceImpl implements CommentService{
     @Autowired
     UsercommentMapper usercommentMapper;
@@ -35,7 +37,8 @@ public class CommentServiceImpl implements CommentService{
      * @return
      */
     @Override
-    public CommentResults listComment() {
+    public CommentResults listComment(Integer pageno,Integer pagesize) {
+        Integer firstitem = pageno*pagesize -1;
         return null;
     }
 }
