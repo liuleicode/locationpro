@@ -22,7 +22,7 @@ public class UserSignController {
 
 
     /**
-     * 用户查询登录信息 通过
+     * 用户查询登录信息
      * @param u
      * @param pagesize
      * @param pageno
