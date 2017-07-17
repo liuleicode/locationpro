@@ -13,14 +13,17 @@
 		<!--头部  star-->
 		<header>
 			<a href="javascript:history.go(-1);">
-				<div class="_left"><img src="/images/left.png"/></div>
-				   评价
+				<div class="_left"><img src="/images/left.png" /></div>
 			</a>
+				   评价
+				<div class="_right"> 发布</div>
+
+
 		</header>
 		<!--头部 end-->
         <!--内容 star-->
 		<div class="contaniner fixed-cont">
-            <input type="hidden" th:value="${localnum}"/>
+            <input type="hidden" th:value="${localnum}" />
 			<!--1-->
 			<section class="assess">
 				<p>
@@ -37,50 +40,50 @@
 			</section>
 			<!--2-->
 			<section class="main">
-			<div class="main-wrap">
-				<span class="revtit">综合评分:</span>
+				<div class="main-wrap">
+				<span class="revtit">&nbsp;&nbsp;&nbsp;&nbsp;   综   合:</span>
 				<div id="mydiv1" currentindex="4" class="mydiv">
 	    			<ul class="star_ul">
 				        <li num="1"><img src="/images/star_full.png" class="xing_hui"/></li>
 				        <li num="2"><img src="/images/star_full.png" class="xing_hui"/></li>
 				        <li num="3"><img src="/images/star_full.png" class="xing_hui"/></li>
 				        <li num="4"><img src="/images/star_full.png" class="xing_hui"/></li>
-				        <li num="5"><img src="/images/star_empty.png" class="xing_hui"/></li>
+				        <li num="5"><img src="/images/star_full.png" class="xing_hui"/></li>
 			   		</ul>
 				</div>
 			</div>
-			
-			<div class="main-wrap">
-				<span class="revtit">&nbsp;&nbsp;   环   境:</span>
+
+				<div class="main-wrap">
+				<span class="revtit">&nbsp;&nbsp;&nbsp;&nbsp;   环   境:</span>
 				<div id="mydiv2" currentindex="4" class="mydiv">
 	    			<ul class="star_ul">
 						<li num="1"><img src="/images/star_full.png" class="xing_hui"/>  </li>
 				        <li num="2"><img src="/images/star_full.png" class="xing_hui"/></li>
 				        <li num="3"><img src="/images/star_full.png" class="xing_hui"/></li>
 				        <li num="4"><img src="/images/star_full.png" class="xing_hui"/></li>
-				        <li num="5"><img src="/images/star_empty.png" class="xing_hui"/></li>
+				        <li num="5"><img src="/images/star_full.png" class="xing_hui"/></li>
 			   		</ul>
 				</div>
 			</div>
-		
-			<div class="main-wrap">
-				<span class="revtit">&nbsp;&nbsp;   风   貌:</span>
+
+				<div class="main-wrap">
+				<span class="revtit">&nbsp;&nbsp;&nbsp;&nbsp;   风   貌:</span>
 				<div id="mydiv3" currentindex="4" class="mydiv">
 	    			<ul class="star_ul">
 				        <li num="1"><img src="/images/star_full.png" class="xing_hui"/></li>
 				        <li num="2"><img src="/images/star_full.png" class="xing_hui"/></li>
 				        <li num="3"><img src="/images/star_full.png" class="xing_hui"/></li>
 				        <li num="4"><img src="/images/star_full.png" class="xing_hui"/></li>
-				        <li num="5"><img src="/images/star_empty.png" class="xing_hui"/></li>
+				        <li num="5"><img src="/images/star_full.png" class="xing_hui"/></li>
 			   		</ul>
 				</div>
 			</div>
-	</section>
+			</section>
 		</div>
 		<!--内容 end-->
         
         <!--底部 star-->
-		<footer class="assess-footer fixed-footer ">
+		<!--<footer class="assess-footer fixed-footer ">
 			<ul>
 				<li>
 					<input type="checkbox" id="ass"  ></input>
@@ -88,7 +91,7 @@
 				</li>
 				<input type="button" value="发表评论" ></input>
 			</ul>
-		</footer>
+		</footer>-->
        <!--底部  end-->
 
 </body>
