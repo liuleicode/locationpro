@@ -101,6 +101,12 @@ header ._left {
     left: 0;
     top: 0;
 }
+header ._right {
+    position: absolute;
+    float: right;
+    width: 20%;
+    overflow: hidden;
+}
 header ._left img {
     height: 1rem;
     margin: 0.75rem 0 0 0.6rem;
