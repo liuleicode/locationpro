@@ -10,7 +10,11 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.JdbcType;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
 public interface LocalimgMapper {
     @Delete({
         "delete from localimg",
@@ -58,4 +62,21 @@ public interface LocalimgMapper {
         "where localimgid = #{localimgid,jdbcType=BIGINT}"
     })
     int updateByPrimaryKey(Localimg record);
+
+
+
+    @Select({
+            "select",
+            "localimgid, imgtypeid, imgtype, status, imgurl",
+            "from localimg",
+            "where imgtypeid in #{0}"
+    })
+    @Results({
+            @Result(column="localimgid", property="localimgid", jdbcType=JdbcType.BIGINT, id=true),
+            @Result(column="imgtypeid", property="imgtypeid", jdbcType=JdbcType.VARCHAR),
+            @Result(column="imgtype", property="imgtype", jdbcType=JdbcType.VARCHAR),
+            @Result(column="status", property="status", jdbcType=JdbcType.VARCHAR),
+            @Result(column="imgurl", property="imgurl", jdbcType=JdbcType.VARCHAR)
+    })
+    List<Localimg> selectByUsercommentids(List<String> usercommentsids);
 }

@@ -1,8 +1,10 @@
 package com.ll.location.service;
 
-import com.ll.location.domain.CommentResults;
+import com.ll.location.domain.CommentResult;
 import com.ll.location.domain.ExecuteResult;
 import com.ll.location.model.Usercomment;
+
+import java.util.List;
 
 /**
  * Created by liulei on 2017/7/17.
@@ -17,5 +19,5 @@ public interface CommentService {
      * 返回用户评论或者广告
      * @return
      */
-    CommentResults listComment(Integer pageno,Integer pagesize);
+    List<CommentResult> listComment(Integer pageno, Integer pagesize, String commenttype);
 }

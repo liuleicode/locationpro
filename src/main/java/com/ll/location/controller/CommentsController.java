@@ -82,17 +82,17 @@ public class CommentsController {
             modelAndView.addObject("ExecuteResult", new ExecuteResult("1", "传入参数有误"));
         }
 
-        CommentResults commentResults = commentService.listComment(pageno, pagesize);
+        CommentResults commentResults = commentService.listComment(pageno, pagesize, commenttype);
 
         //如果是评论 跳转到评论页面
-        if("2".equals(commenttype)) {
+        if ("2".equals(commenttype)) {
             modelAndView = new ModelAndView("commentpage");
-            modelAndView.addObject("commentResults",commentResults);
-        }else{
+            modelAndView.addObject("commentResults", commentResults);
+        } else {
 
             //如果是广告 跳转到广告页面
             modelAndView = new ModelAndView("broadcast");
-            modelAndView.addObject("commentResults",commentResults);
+            modelAndView.addObject("commentResults", commentResults);
         }
 
         return modelAndView;

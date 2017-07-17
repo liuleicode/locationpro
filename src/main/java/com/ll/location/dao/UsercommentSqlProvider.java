@@ -29,6 +29,10 @@ public class UsercommentSqlProvider {
             sql.VALUES("commenttype", "#{commenttype,jdbcType=VARCHAR}");
         }
         
+        if (record.getCreatetime() != null) {
+            sql.VALUES("createtime", "#{createtime,jdbcType=TIMESTAMP}");
+        }
+        
         return sql.toString();
     }
 
@@ -50,6 +54,10 @@ public class UsercommentSqlProvider {
         
         if (record.getCommenttype() != null) {
             sql.SET("commenttype = #{commenttype,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getCreatetime() != null) {
+            sql.SET("createtime = #{createtime,jdbcType=TIMESTAMP}");
         }
         
         sql.WHERE("usercommentid = #{usercommentid,jdbcType=VARCHAR}");

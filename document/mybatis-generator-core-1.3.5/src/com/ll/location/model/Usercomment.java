@@ -1,5 +1,7 @@
 package com.ll.location.model;
 
+import java.util.Date;
+
 public class Usercomment {
     private String usercommentid;
 
@@ -10,6 +12,8 @@ public class Usercomment {
     private String comment;
 
     private String commenttype;
+
+    private Date createtime;
 
     public String getUsercommentid() {
         return usercommentid;
@@ -49,5 +53,13 @@ public class Usercomment {
 
     public void setCommenttype(String commenttype) {
         this.commenttype = commenttype == null ? null : commenttype.trim();
+    }
+
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
     }
 }

@@ -21,10 +21,10 @@ public interface UsercommentMapper {
     @Insert({
         "insert into usercomment (usercommentid, userid, ",
         "localdtlid, comment, ",
-        "commenttype)",
+        "commenttype, createtime)",
         "values (#{usercommentid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, ",
         "#{localdtlid,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR}, ",
-        "#{commenttype,jdbcType=VARCHAR})"
+        "#{commenttype,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP})"
     })
     int insert(Usercomment record);
 
@@ -33,7 +33,7 @@ public interface UsercommentMapper {
 
     @Select({
         "select",
-        "usercommentid, userid, localdtlid, comment, commenttype",
+        "usercommentid, userid, localdtlid, comment, commenttype, createtime",
         "from usercomment",
         "where usercommentid = #{usercommentid,jdbcType=VARCHAR}"
     })
@@ -42,7 +42,8 @@ public interface UsercommentMapper {
         @Result(column="userid", property="userid", jdbcType=JdbcType.VARCHAR),
         @Result(column="localdtlid", property="localdtlid", jdbcType=JdbcType.VARCHAR),
         @Result(column="comment", property="comment", jdbcType=JdbcType.VARCHAR),
-        @Result(column="commenttype", property="commenttype", jdbcType=JdbcType.VARCHAR)
+        @Result(column="commenttype", property="commenttype", jdbcType=JdbcType.VARCHAR),
+        @Result(column="createtime", property="createtime", jdbcType=JdbcType.TIMESTAMP)
     })
     Usercomment selectByPrimaryKey(String usercommentid);
 
@@ -54,7 +55,8 @@ public interface UsercommentMapper {
         "set userid = #{userid,jdbcType=VARCHAR},",
           "localdtlid = #{localdtlid,jdbcType=VARCHAR},",
           "comment = #{comment,jdbcType=VARCHAR},",
-          "commenttype = #{commenttype,jdbcType=VARCHAR}",
+          "commenttype = #{commenttype,jdbcType=VARCHAR},",
+          "createtime = #{createtime,jdbcType=TIMESTAMP}",
         "where usercommentid = #{usercommentid,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(Usercomment record);
