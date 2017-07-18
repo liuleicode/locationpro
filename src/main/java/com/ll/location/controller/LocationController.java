@@ -89,4 +89,15 @@ public class LocationController {
         //  modelAndView.addObject("localdtl", localdtl);
         return modelAndView;
     }
+
+    @RequestMapping("evalutionlist")
+    public ModelAndView goevalutionlist(String localid, HttpServletRequest request, HttpServletResponse response) {
+
+        logger.info("进入findlocation接口");
+        logger.info("localid:" + localid);
+        ModelAndView modelAndView = new ModelAndView("/jsp/evalutionlist");
+        //Localdtl localdtl = findLocationService.findLocal(localid, user, source);
+        //  modelAndView.addObject("localdtl", localdtl);
+        return modelAndView;
+    }
 }
