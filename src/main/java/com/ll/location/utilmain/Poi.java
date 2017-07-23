@@ -9,6 +9,10 @@ import org.apache.xmlbeans.XmlException;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * POI 读取 word 2003 和 word 2007 中文字内容的<a href="http://lib.csdn.net/base/softwaretest" class='replace_word' title="软件测试知识库" target='_blank' style='color:#df3434; font-weight:bold;'>测试</a>类<br />
@@ -19,7 +23,7 @@ import java.io.IOException;
 public class Poi {
     public static void main(String[] args) throws OpenXML4JException, XmlException, IOException {
 
-        String path = "C:\\files\\files\\files\\"; // 路径
+        String path = "C:\\files\\"; // 路径
         File f = new File(path);
         if (!f.exists()) {
             System.out.println(path + " not exists");
@@ -68,14 +72,18 @@ public class Poi {
         POIXMLTextExtractor extractor = new XWPFWordExtractor(opcPackage);
         String text2007 = extractor.getText();
 //        System.out.println(text2007);
-        String text20072 = text2007.replace(" 类别: ","\u0007类别: ").replace(" ", "\u0008").replace("\t\t","\taaaa\t").replace("\t\n","\taaaa\t").replace("\u0007", " ").replace(":",": ");
+        String text20072 = text2007.replace(" 类别: ", "\u0007类别: ").replace(" ", "\u0008").replace("\t\t", "\taaaa\t").replace("\t\n", "\taaaa\t").replace("\u0007", " ").replace(":", ": ");
         String[] array1 = text20072.split("\\s+");
         System.out.println(array1.length);
         int i = 0;
+        Map<Integer, String> arrays = new HashMap<>();
         for (String array : array1) {
-            if (!array.trim().equals("登记表")&& i==0)
+            if (!array.trim().equals("登记表") && i == 0)
                 continue;
-            System.out.println(++i + array.replace("\u0008", " ").trim().replace("aaaa",""));
+            System.out.println(++i + array.replace("\u0008", " ").trim().replace("aaaa", ""));
+            arrays.put(i, array.replace("\u0008", " ").trim().replace("aaaa", ""));
+
+
         }
         /**
          * 3-区域
@@ -89,6 +97,33 @@ public class Poi {
          *
          *
          */
+        //name
+        arrays.get(7);
+        //area
+        arrays.get(3);
+        //type
+        arrays.get(5);
+
+        //mainshortname
+        arrays.get(9);
+        //mainbeforename
+        arrays.get(11);
+
+        //mainothername
+        arrays.get(13);
+        //mainoriginofname
+        arrays.get(19);
+
+        //mainhistoryevolution
+        arrays.get(22);
+        //mainlocalinfo
+        String s = "";
+        for (int y = 25; y < 1000; y++) {
+            if (arrays.get(i).contains("【"))
+                s = s + arrays.get(i)+"\n";
+            else
+                break;
+        }
 //        System.out.println(text2007);
     }
 }
