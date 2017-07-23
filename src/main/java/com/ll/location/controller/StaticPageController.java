@@ -14,13 +14,13 @@ public class StaticPageController {
 
     @RequestMapping("/gofirstPage")
     public ModelAndView gofitstPage(){
-        ModelAndView modelAndView=new ModelAndView("/jsp/staticpage/firstpage");
+        ModelAndView modelAndView=new ModelAndView("jsp/staticpage/firstpage");
         return modelAndView;
     }
 
     @RequestMapping("/gofirstPage2")
     public ModelAndView gofitstPage2(){
-        ModelAndView modelAndView=new ModelAndView("/jsp/staticpage/firstpage-2");
+        ModelAndView modelAndView=new ModelAndView("jsp/staticpage/firstpage-2");
         return modelAndView;
     }
 
@@ -30,7 +30,7 @@ public class StaticPageController {
      */
     @RequestMapping("/gocommentPage")
     public ModelAndView gocommentPage(){
-        ModelAndView modelAndView=new ModelAndView("/jsp/staticpage/comment");
+        ModelAndView modelAndView=new ModelAndView("jsp/staticpage/comment");
         return modelAndView;
     }
 
@@ -40,13 +40,13 @@ public class StaticPageController {
      */
     @RequestMapping("/gocommentPage2")
     public ModelAndView gocommentPage2(){
-        ModelAndView modelAndView=new ModelAndView("/jsp/staticpage/comment-2");
+        ModelAndView modelAndView=new ModelAndView("jsp/staticpage/comment-2");
         return modelAndView;
     }
 
     @RequestMapping("/gomycenterPage")
     public ModelAndView gomycenterPage(){
-        ModelAndView modelAndView=new ModelAndView("/jsp/staticpage/mycenter");
+        ModelAndView modelAndView=new ModelAndView("jsp/staticpage/mycenter");
         return modelAndView;
     }
 }

@@ -55,7 +55,7 @@ public class LocationController {
         logger.info("localid:" + localid);
         logger.info("user" + JSONObject.toJSONString(user));
         logger.info("source" + source);
-        ModelAndView modelAndView = new ModelAndView("/jsp/localtion");
+        ModelAndView modelAndView = new ModelAndView("jsp/localtion");
         Localdtl localdtl=new Localdtl();
         //Localdtl localdtl = findLocationService.findLocal(localid, user, source);
         localdtl.setName("广武明长城");
@@ -95,7 +95,7 @@ public class LocationController {
 
         logger.info("进入findlocation接口");
         logger.info("localid:" + localid);
-        ModelAndView modelAndView = new ModelAndView("/jsp/evalutionlist");
+        ModelAndView modelAndView = new ModelAndView("jsp/evalutionlist");
         //Localdtl localdtl = findLocationService.findLocal(localid, user, source);
         //  modelAndView.addObject("localdtl", localdtl);
         return modelAndView;

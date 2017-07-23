@@ -32,8 +32,10 @@ public class CommentServiceImpl implements CommentService {
     public ExecuteResult comment(Usercomment usercomment,List<Localimg> localimgs) {
 
         //TODO 图片上传功能需要添加
-        usercomment.setUsercommentid(UUID.randomUUID().toString());
         usercommentMapper.insert(usercomment);
+        for(Localimg localimg : localimgs)
+            localimgMapper.insert(localimg);
+
         ExecuteResult executeResult = new ExecuteResult("0", "评论添加成功");
         return executeResult;
     }
