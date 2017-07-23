@@ -38,9 +38,15 @@ public class CommentsController {
     @Autowired
     CommentService commentService;
 
+    @RequestMapping("/commenttest")
+    @ResponseBody
+    public ModelAndView commenttest(Usercomment usercomment, @RequestParam(value = "img", required = false) MultipartFile imgFiles[], HttpServletRequest request, HttpServletResponse response) {
+        return new ModelAndView("uploadimg");
+    }
+
     @RequestMapping("/comment")
     @ResponseBody
-    public ModelAndView comment(Usercomment usercomment, @RequestParam(value = "img", required = false) MultipartFile imgFiles[], HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView comment(Usercomment usercomment, @RequestParam(value = "imgfile", required = false) MultipartFile imgFiles[], HttpServletRequest request, HttpServletResponse response) {
         //TODO 缺少图片上传的步骤 需要加上
         ModelAndView modelAndView = null;
         if (usercomment == null) {
