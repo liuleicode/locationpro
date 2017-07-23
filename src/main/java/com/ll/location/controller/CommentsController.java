@@ -8,6 +8,7 @@ import com.ll.location.model.Localimg;
 import com.ll.location.model.Usercomment;
 import com.ll.location.prop.ConfigProp;
 import com.ll.location.service.CommentService;
+import com.ll.location.utils.ResFtpUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -57,17 +60,41 @@ public class CommentsController {
         }
         usercomment.setUsercommentid(UUID.randomUUID().toString());
         //上传图片
+        List<Localimg> localimgs = null;
         if (imgFiles != null && imgFiles.length > 0)
             if (imgFiles.length > 4) {
                 modelAndView = new ModelAndView("error");
                 modelAndView.addObject("ExecuteResult", new ExecuteResult("1", "上传图片过多"));
                 return modelAndView;
-            } else{
-                List<Localimg> localimgs = new ArrayList<>();
-                for (int i =0;i<imgFiles.length;i++) {
+            } else {
+                localimgs = new ArrayList<>();
+                for (int i = 0; i < imgFiles.length; i++) {
                     //上传图片放置路径
                     String pathname = ConfigProp.getProperty(ConfigProp.RES_FTP_ACTIVITY_STAR);
                     String fileName = i + "_" + System.currentTimeMillis() + ".jpg";
+                    InputStream is = null;
+                    try {
+                        is = imgFiles[i].getInputStream();
+                        if (is != null) {
+                            // FTP 上传
+                            boolean imgResult = ResFtpUtil.transFileStreamAsFile(is, fileName, pathname);
+                            if (!imgResult) {
+                                modelAndView = new ModelAndView("error");
+                                modelAndView.addObject("ExecuteResult", new ExecuteResult("1", "上传图片失败"));
+                                return modelAndView;
+                            }
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } finally {
+                        try {
+                            if (is != null)
+                                is.close();
+                        } catch (Exception ex) {
+                        }
+
+                        is = null;
+                    }
 
                     Localimg localimg = new Localimg();
                     localimg.setImgtypeid(usercomment.getUsercommentid());
@@ -77,7 +104,8 @@ public class CommentsController {
                     localimgs.add(localimg);
 
                 }
-        ExecuteResult executeResult = commentService.comment(usercomment,localimgs);
+            }
+        ExecuteResult executeResult = commentService.comment(usercomment, localimgs);
         if (executeResult == null || "1".equals(executeResult.getSuccess())) {
             logger.error(JSONObject.toJSONString(executeResult));
             modelAndView = new ModelAndView("error");
