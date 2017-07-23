@@ -2,6 +2,7 @@ package com.ll.location.service;
 
 import com.ll.location.domain.CommentResult;
 import com.ll.location.domain.ExecuteResult;
+import com.ll.location.model.Localimg;
 import com.ll.location.model.Usercomment;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface CommentService {
     /**
      * 添加用户评论 或者广告
      */
-    ExecuteResult comment(Usercomment usercomment);
+    ExecuteResult comment(Usercomment usercomment, List<Localimg> localimgs);
 
     /**
      * 返回用户评论或者广告

@@ -29,3 +29,5 @@ spring:
 mybatis:
 #  mapper-locations: classpath:com.ll.location.dao
   type-aliases-package: com.ll.location.model
+server:
+  port: 9092
