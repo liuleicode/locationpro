@@ -29,7 +29,7 @@ public class CommentServiceImpl implements CommentService {
      * @param usercomment
      */
     @Override
-    public ExecuteResult comment(Usercomment usercomment) {
+    public ExecuteResult comment(Usercomment usercomment,List<Localimg> localimgs) {
 
         //TODO 图片上传功能需要添加
         usercomment.setUsercommentid(UUID.randomUUID().toString());
